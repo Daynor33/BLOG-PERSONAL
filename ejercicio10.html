@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos2.css">
+</head>
+<body>
+    <h2>CALCULAR COSTO DEL PASAJE</h2>
+    <form>
+        <label for="km">Distancia (km):</label>
+        <input type="number" id="km" step="0.1"><br><br>
+
+        <label>Tipo de pasajero:</label><br>
+        <input type="radio" name="tipo" id="estudiante"> Estudiante<br>
+        <input type="radio" name="tipo" id="adulto"> Adulto<br>
+        <input type="radio" name="tipo" id="mayor"> Adulto Mayor<br><br>
+
+        <button type="button" onclick="calcularPasaje()">Calcular</button>
+        <button type="reset">Limpiar</button><br><br>
+
+        <label for="costo">Costo total (Bs):</label>
+        <input type="text" id="costo" readonly>
+    </form>
+
+    <script>
+        function calcularPasaje() {
+            let km = parseFloat(document.getElementById("km").value);
+            let total = 0;
+            if (document.getElementById("estudiante").checked) {
+                total = km * 0.80;
+            } 
+            else if (document.getElementById("adulto").checked) {
+                total = km * 1.50;
+            } 
+            else if (document.getElementById("mayor").checked) {
+                total = km * 1.00;
+            } 
+            else {
+                alert("Seleccione el tipo de pasajero");
+                return;
+            }
+            document.getElementById("costo").value = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
